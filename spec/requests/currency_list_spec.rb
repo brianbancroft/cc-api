@@ -17,6 +17,8 @@ RSpec.describe "/api/v1/currencies", type: :request do
   # Widget. As you add validations to Widget, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
+
+
     skip("Add a hash of attributes valid for your model")
   }
 
@@ -34,16 +36,14 @@ RSpec.describe "/api/v1/currencies", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      Widget.create! valid_attributes
-      get api_v1_currencies, headers: valid_headers, as: :json
+      get api_v1_currencies_url, headers: valid_headers, as: :json
       expect(response).to be_successful
     end
   end
 
   describe "GET /rate" do
     it "renders a successful response" do
-      widget = Widget.create! valid_attributes
-      get api_v1_currencies_rate, as: :json
+      get api_v1_currencies_rate_url, params: {from: 'AAA', to: 'BBB'}, as: :json
       expect(response).to be_successful
     end
   end
