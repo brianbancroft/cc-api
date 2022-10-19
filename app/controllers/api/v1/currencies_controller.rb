@@ -1,8 +1,15 @@
 class  Api::V1::CurrenciesController < ApplicationController
+    api :GET, '/api/v1/currencies', 'List all supported currencies'
+    returns :code => 200 do
+        property :reason, String, :desc => "Why this was forbidden"
+     end
     def index    
         render :json => {currencies: CurrencyList.retrieve}
     end
 
+    api :GET, '/api/v1/currencies/rate', 'Provide a conversion rate between two given currencies'
+    param :from, String, 'The currency you seek to convert from'
+    param :to, String, 'The currency you seek to convert to'
     def rate
         from = params[:from]
         to = params[:to]

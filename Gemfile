@@ -51,3 +51,4 @@ end
 
 
 gem "rspec-rails", group: [:development, :test]
+gem 'apipie-rails'
